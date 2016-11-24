@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../stylesheets/main.css">
+  </head>
+  <body>
+    <div class='main'>
+      <div class='top-frame'>
+        <div class="top-button" onclick="openURL('register')">CRIAR CONTA</div>
+        <div class="top-button2" onclick="openURL('vote')">VOTAR</div>
+        <div class="top-button3" onclick="openURL('donate')">DOAR</div>
+        <div class='close' onclick="window.close()"></div>
+      </div>
+      <div class='news'>
+        <img src='img/news.png' />
+      </div>
+      <div class='bottom-frame'>
+        <div class='status'>
+          <text class='texto'>CLIQUE EM VERIFICAR PARA INICIAR</text>
+        </div>
+        <div class='progressbar' id="bar"></div>
+        <form>
+          <button class='play' type='button'></button>
+          <button class='update' onclick="updateCheck()" type='button'></button>
+          <button class='folder' type='button'></button>
+        </form>
+      </div>
+    </div>
+    <script>
+    const path = require('../src/pathHandler.js')
+    const verify = require('../src/verifyHandler.js')
+    const { dialog } = require('electron').remote
+    const { shell } = require('electron')
+    const folder = document.getElementsByClassName('folder')[0]
+
+    function updateCheck(){
+        document.getElementsByClassName('update')[0].disabled = true
+        document.getElementsByClassName('folder')[0].disabled = true
+        verify.startVerify(1)
+    }
+
+    function checkRun(){
+      document.getElementsByClassName('play')[0].disabled = true
+      verify.startVerify(0)
+
+    }
+
+    folder.addEventListener('click', function(event){
+      const options = {
+          type: 'info',
+          title: 'Você deseja mesmo alterar a pasta do jogo?',
+          message: "A pasta atual é: " + path.getPath(),
+          buttons: ['Sim', 'Cancelar']
+        }
+      dialog.showMessageBox(options, function (index) {
+        if(index == 0){
+          path.updatePath(path.selectPath()[0])
+        }
+      })
+    })
+
+    function openURL(param){
+      shell.openExternal('https://idmstory.wtf/'+param)
+    }
+    </script>
+  </body>
+</html>

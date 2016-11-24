@@ -1,0 +1,34 @@
+{
+  "name": "IDMStory",
+  "version": "0.1.0",
+  "description": "Atualizador/Iniciador do IDMStory",
+  "main": "electron.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "build --dir",
+    "build": "build --win"
+  },
+  "build": {
+    "appId": "org.idm.IDMstory",
+    "iconUrl": "https://www.dropbox.com/s/2a6vv59hcuy768y/idm.ico?dl=1",
+    "squirrelWindows": {},
+    "win": {
+      "certificateFile": "./certs/my_signing_key.pfx",
+      "certificatePassword": "dinh0311"
+    }
+  },
+  "author": "picles <eduselcip@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.4.7",
+    "electron-builder": "7.14.1"
+  },
+  "dependencies": {
+    "forEachAsync": "^3.0.0",
+    "glob": "^7.1.1",
+    "jsonfile": "^2.4.0",
+    "progressbar.js": "^1.0.1",
+    "request-progress": "^2.0.1",
+    "request-promise": "^4.1.1"
+  }
+}

@@ -1,0 +1,24 @@
+* {
+  user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none; /* Chrome/Safari */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circulo {
+  margin-right: 25px;
+}
+
+.boneco {
+  transition: left 1s linear;
+}

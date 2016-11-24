@@ -1,0 +1,189 @@
+* {
+    user-drag: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -webkit-app-region: no-drag;
+    cursor: url('../app/img/cursor.png'), auto;
+}
+
+button {
+  border: none;
+  outline:none;
+}
+
+body {
+    margin: 0
+}
+
+.main {
+    background-image: url('../app/img/background.png');
+    width: 100%;
+    height: 600px;
+    cursor: url('../app/img/cursor.png'), auto;
+}
+
+.top-frame {
+    position: absolute;
+    height: 72px;
+    width: 800px;
+    top: 0;
+    cursor: url('../app/img/cursor.png'), auto;
+    -webkit-app-region: drag;
+}
+
+.bottom-frame {
+    position: absolute;
+    height: 124px;
+    width: 800px;
+    bottom: 0;
+}
+
+.close {
+    position: absolute;
+    background-image: url('../app/img/close.png');
+    background-repeat: no-repeat;
+    top: 0;
+    right: 0;
+    width: 59px;
+    height: 57px;
+    border: none;
+}
+
+.close:hover {
+    background-image: url('../app/img/close-hover.png');
+}
+
+.play {
+    background-color: Transparent;
+    position: absolute;
+    background-image: url('../app/img/play.png');
+    background-repeat: no-repeat;
+    bottom: 0;
+    right: 0;
+    width: 250px;
+    height: 108px;
+    border: none;
+}
+
+.play:enabled:hover {
+    background-image: url('../app/img/play-hover.png');
+}
+
+.play:disabled {
+    background-image: url('../app/img/play-disabled.png');
+}
+
+.update {
+    background-color: Transparent;
+    position: absolute;
+    background-image: url('../app/img/update.png');
+    background-repeat: no-repeat;
+    bottom: 0;
+    right: 0;
+    width: 250px;
+    height: 108px;
+    border: none;
+}
+
+.update:enabled:hover {
+    background-image: url('../app/img/update-hover.png');
+}
+
+.update:disabled {
+    background-image: url('../app/img/update-disabled.png');
+}
+
+.folder {
+    background-color: transparent;
+    position: absolute;
+    background: url('../app/img/pasta.png') no-repeat;
+    width: 68px;
+    height: 36px;
+    right: 0;
+    margin-right: 250px;
+    margin-top: 15px;
+}
+
+.folder:enabled:hover {
+    background-image: url('../app/img/pasta-hover.png');
+}
+
+.folder:disabled {
+    background-image: url('../app/img/pasta-disabled.png');
+}
+
+.news {
+    position: absolute;
+    margin-top: 72px;
+    height: 404px;
+    width: 800px;
+}
+
+.top-button {
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 41px;
+    color: white;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 24px;
+    width: 170px;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.top-button2 {
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 329px;
+    color: white;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 24px;
+    width: 85px;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.top-button3 {
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 582px;
+    color: white;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 24px;
+    width: 170px;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.top-button:hover, .top-button2:hover, .top-button3:hover {
+    color: lawngreen
+}
+
+.progressbar {
+  position: absolute;
+  left: 61px;
+  top: 62px;
+  width: 407px;
+  height: 45px;
+  z-index: -1;
+}
+
+.status {
+  position: absolute;
+  left: 61px;
+  top: 31px;
+  width: 409px;
+  height: 27px;
+  z-index: 2;
+  text-align: center;
+}
+
+text {
+  font-size: 20px;
+  font-family: "Candara";
+  color: #fff;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+}
