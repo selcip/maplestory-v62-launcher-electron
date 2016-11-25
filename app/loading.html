@@ -32,10 +32,14 @@
       console.log(e)
     })
 
-    autoUpdater.setFeedURL('http://localhost:9000/dist/win/')
-    setTimeout(()=> {
-        autoUpdater.checkForUpdates();
-    }, 10000)
+    autoUpdater.setFeedURL('http://149.56.206.52:9000/dist/win/')
+    if(!path.test()){
+      setTimeout(()=> {
+          autoUpdater.checkForUpdates();
+      }, 10000)
+    }else{
+      autoUpdater.checkForUpdates();
+    }
     window.autoUpdater = autoUpdater
   </script>
 </html>

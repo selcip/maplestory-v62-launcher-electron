@@ -2,7 +2,8 @@ module.exports = {
   getPath,
   checkFile,
   selectPath,
-  updatePath
+  updatePath,
+  test
 }
 
 const ipc = require('electron').ipcRenderer
@@ -15,6 +16,7 @@ function checkFile(){
       fs.accessSync('config.json', fs.F_OK)
       getPath()
     }catch(e){
+      window.alert('Selecione a pasta do jogo')
       updatePath(selectPath()[0])
   }
   ipc.send('main')
@@ -23,6 +25,17 @@ function checkFile(){
 function getPath(){
   let path = jsonfile.readFileSync('config.json')
   return path.path
+}
+
+function test(){
+  let res
+  try{
+      fs.accessSync('config.json', fs.F_OK)
+      res = true
+    }catch(e){
+      res = false
+  }
+  return res
 }
 
 function selectPath(){

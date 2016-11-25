@@ -39,7 +39,7 @@ function startLoading() {
     winLoad=null
   })
 
-  //winLoad.webContents.openDevTools()
+  winLoad.webContents.openDevTools()
 
   winLoad.once('ready-to-show', ()=>{
     winLoad.show()
@@ -59,6 +59,8 @@ function startMain() {
   win.on('closed', ()=>{
     win=null
   })
+
+  win.webContents.openDevTools()
 
   win.once('ready-to-show', ()=>{
     winLoad.destroy()

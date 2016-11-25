@@ -32,7 +32,8 @@ function checkUpdate(){
     console.log(e)
   })
 
-  autoUpdater.setFeedURL('http://149.56.206.52:9000/dist/win/')
+  autoUpdater.setFeedURL('http://idmstory.wtf/dist/win/')
+  console.log(autoUpdater.getFeedURL())
   setTimeout(()=> {
       autoUpdater.checkForUpdates();
   }, 5000)
