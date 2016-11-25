@@ -10,11 +10,15 @@
   },
   "build": {
     "appId": "org.idm.IDMstory",
-    "iconUrl": "https://www.dropbox.com/s/2a6vv59hcuy768y/idm.ico?dl=1",
-    "squirrelWindows": {},
+    "squirrelWindows": {
+      "iconUrl": "https://www.dropbox.com/s/2a6vv59hcuy768y/idm.ico?dl=1",
+      "loadingGif": "build/idm.ico",
+      "msi": true
+    },
     "win": {
       "certificateFile": "./certs/my_signing_key.pfx",
-      "certificatePassword": "dinh0311"
+      "certificatePassword": "dinh0311",
+      "icon": "build/idm.ico"
     }
   },
   "author": "picles <eduselcip@gmail.com>",
