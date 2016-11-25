@@ -32,7 +32,7 @@ function checkUpdate(){
     console.log(e)
   })
 
-  autoUpdater.setFeedURL('http://149.56.206.52/launcher/')
+  autoUpdater.setFeedURL('http://149.56.206.52:9000/dist/win/')
   setTimeout(()=> {
       autoUpdater.checkForUpdates();
   }, 5000)

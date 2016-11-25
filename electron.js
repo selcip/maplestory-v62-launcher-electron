@@ -60,8 +60,6 @@ function startMain() {
     win=null
   })
 
-  win.webContents.openDevTools()
-
   win.once('ready-to-show', ()=>{
     winLoad.destroy()
     win.show()
