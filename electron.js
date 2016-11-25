@@ -2,6 +2,7 @@ const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const url = require('url')
 
+if(require('electron-squirrel-startup')) return;
 // Referencia global pro objeto que vai executar a janela, se não tiver isso o
 // coletor de lixo pode fechar seu programa do nada
 let win, winLoad
@@ -38,7 +39,7 @@ function startLoading() {
     winLoad=null
   })
 
-  winLoad.webContents.openDevTools()
+  //winLoad.webContents.openDevTools()
 
   winLoad.once('ready-to-show', ()=>{
     winLoad.show()

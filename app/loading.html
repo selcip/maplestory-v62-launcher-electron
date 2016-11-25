@@ -9,7 +9,33 @@
     <img class="boneco" src="img/ms.gif" />
   </body>
   <script>
-    const updater = require('../src/updateHandler.js')
-    updater.checkUpdate()
+    const package = require('../package.json')
+    const remote = require("electron").remote
+    const autoUpdater = remote.autoUpdater
+    const path = require('../src/pathHandler.js')
+
+    autoUpdater.on('update-availabe', () => {
+      document.body.insertBefore(img, document.getElementsByClassName('boneco')[0])
+      console.log('update available')
+    })
+    autoUpdater.on('checking-for-update', () => {
+      console.log('checking-for-update')
+    })
+    autoUpdater.on('update-not-available', () => {
+      console.log('update-not-available')
+      path.checkFile()
+    })
+    autoUpdater.on('update-downloaded', (e) => {
+      autoUpdater.quitAndInstall()
+    })
+    autoUpdater.on('error', (e)=>{
+      console.log(e)
+    })
+
+    autoUpdater.setFeedURL('http://localhost:9000/dist/win/')
+    setTimeout(()=> {
+        autoUpdater.checkForUpdates();
+    }, 10000)
+    window.autoUpdater = autoUpdater
   </script>
 </html>

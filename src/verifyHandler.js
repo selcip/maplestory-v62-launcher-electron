@@ -11,6 +11,7 @@ const req_progress = require('request-progress')
 const rp = require('request-promise')
 const fs = require('fs')
 const status = document.getElementsByClassName('texto')[0]
+exec = require('child_process').exec
 
 var cmd = 'start IDM.exe 143.202.36.242 8484 --startAsAdmin'
 var options = {
@@ -42,11 +43,11 @@ function compareFiles(files, tipo){
         console.log(arquivo + ': ' + size)
         if(size != files[arquivo]){
           baixar.push(arquivo)
-        }else{
           if(tipo==0){
             window.alert('Algum arquivo foi alterado!')
             window.close()
           }
+        }else{
           console.log('nossa')
         }
       }else{
@@ -66,8 +67,8 @@ function compareFiles(files, tipo){
           downloadFiles()
       }, 2000)
     }else{
-      exec('start '+getPath()+'/IDM.exe 143.202.36.242 8484 --startAsAdmin' function(error, stdout, stderr) {
-        playButton.disabled = false
+      exec('start '+getPath()+'/IDM.exe 143.202.36.242 8484 --startAsAdmin', function(error, stdout, stderr) {
+        window.close()
       })
     }
   })

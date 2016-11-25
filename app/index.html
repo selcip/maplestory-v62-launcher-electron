@@ -22,7 +22,7 @@
         </div>
         <div class='progressbar' id="bar"></div>
         <form>
-          <button class='play' type='button'></button>
+          <button class='play' type='button' onclick="checkRun()"></button>
           <button class='update' onclick="updateCheck()" type='button'></button>
           <button class='folder' type='button'></button>
         </form>
@@ -44,7 +44,6 @@
     function checkRun(){
       document.getElementsByClassName('play')[0].disabled = true
       verify.startVerify(0)
-
     }
 
     folder.addEventListener('click', function(event){

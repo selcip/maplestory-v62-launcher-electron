@@ -32,7 +32,9 @@ function checkUpdate(){
     console.log(e)
   })
 
-  autoUpdater.setFeedURL('http://149.56.206.52/idmstory/releases/win64')
-  autoUpdater.checkForUpdates()
+  autoUpdater.setFeedURL('http://149.56.206.52/launcher/')
+  setTimeout(()=> {
+      autoUpdater.checkForUpdates();
+  }, 5000)
   window.autoUpdater = autoUpdater
 }

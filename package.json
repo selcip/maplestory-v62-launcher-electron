@@ -1,6 +1,6 @@
 {
   "name": "IDMStory",
-  "version": "0.1.0",
+  "version": "0.6.0",
   "description": "Atualizador/Iniciador do IDMStory",
   "main": "electron.js",
   "scripts": {
@@ -12,8 +12,9 @@
     "appId": "org.idm.IDMstory",
     "squirrelWindows": {
       "iconUrl": "https://www.dropbox.com/s/2a6vv59hcuy768y/idm.ico?dl=1",
-      "loadingGif": "build/idm.ico",
-      "msi": true
+      "loadingGif": "build/idm_loading.ico",
+      "msi": true,
+      "remoteReleases": "http://localhost/launcher/old"
     },
     "win": {
       "certificateFile": "./certs/my_signing_key.pfx",
@@ -28,6 +29,7 @@
     "electron-builder": "7.14.1"
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "forEachAsync": "^3.0.0",
     "glob": "^7.1.1",
     "jsonfile": "^2.4.0",
