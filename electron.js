@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain} = require('electron')
+const {app, BrowserWindow, ipcMain, globalShortcut} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -11,17 +11,17 @@ let main = {
   height: 600,
   show: false,
   resizable: false,
-  transparent: true,
+  backgroundColor: '#ffffff',
   frame: false,
   icon: path.join(__dirname, 'build/idm.ico')
 }
 let loading = {
-  width: 800,
+  width: 156,
   height: 186,
   show: false,
   resizable: false,
   frame: false,
-  transparent: true,
+  backgroundColor: '#44a8ee',
   movable: false,
   icon: path.join(__dirname, 'build/idm.ico')
 }
@@ -39,7 +39,7 @@ function startLoading() {
     winLoad=null
   })
 
-  winLoad.webContents.openDevTools()
+  //winLoad.webContents.openDevTools()
 
   winLoad.once('ready-to-show', ()=>{
     winLoad.show()
@@ -60,7 +60,7 @@ function startMain() {
     win=null
   })
 
-  win.webContents.openDevTools()
+  //win.webContents.openDevTools()
 
   win.once('ready-to-show', ()=>{
     winLoad.destroy()
@@ -69,7 +69,12 @@ function startMain() {
 }
 
 // Executa a funcao @CreateWindow quando o aplicativo está pronto
-app.on('ready', startLoading)
+app.on('ready', ()=>{
+  const ret = globalShortcut.register('Alt+F4', () => {
+    app.quit()
+  })
+  startLoading()
+})
 
 //Caso todas as janelas estejam fechadas, o aplicativo é finalizado
 app.on('window-all-close', ()=>{

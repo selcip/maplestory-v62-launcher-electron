@@ -15,7 +15,6 @@
     const path = require('../src/pathHandler.js')
 
     autoUpdater.on('update-availabe', () => {
-      document.body.insertBefore(img, document.getElementsByClassName('boneco')[0])
       console.log('update available')
     })
     autoUpdater.on('checking-for-update', () => {

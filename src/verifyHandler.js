@@ -1,5 +1,6 @@
 module.exports = {
-  startVerify
+  startVerify,
+  closeApp()
 }
 
 const { getPath } = require('./pathHandler')
@@ -10,18 +11,24 @@ const request = require('request')
 const req_progress = require('request-progress')
 const rp = require('request-promise')
 const fs = require('fs')
+const ipc = require('electron').ipcRenderer
 const status = document.getElementsByClassName('texto')[0]
 exec = require('child_process').exec
 
-var cmd = 'start IDM.exe 143.202.36.242 8484 --startAsAdmin'
 var options = {
     uri: 'http://149.56.206.52/check',
     json: true
 }
 var arquivos = [
   'Base.wz', 'Character.wz', 'Effect.wz', 'Etc.wz', 'Item.wz', 'List.wz', 'Map.wz', 'Mob.wz', 'Morph.wz', 'Npc.wz', 'Quest.wz', 'Reactor.wz', 'Skill.wz', 'Sound.wz', 'String.wz', 'TamingMob.wz', 'UI.wz',
-  'Canvas.dll', 'WZ.NET.dll', 'Gr2D_DX8.dll', 'ijl15.dll', 'NameSpace.dll', 'npkcrypt.dll', 'npkpdb.dll', 'PCOM.dll', 'ResMan.dll', 'Shape2D.dll', 'Sound_DX8.dll', 'WzFlashRenderer.dll', 'WzMss.dll', 'ZLZ.dll'
-], baixar = ['IDM.exe']
+  'Canvas.dll', 'WZ.NET.dll', 'Gr2D_DX8.dll', 'ijl15.dll', 'NameSpace.dll', 'npkcrypt.dll', 'npkpdb.dll', 'PCOM.dll', 'ResMan.dll', 'Shape2D.dll', 'Sound_DX8.dll', 'WzFlashRenderer.dll', 'WzMss.dll', 'ZLZ.dll',
+  'IDM.exe'
+], baixar = []
+
+
+function closeApp(){
+  ipc.send('leave')
+}
 
 function startVerify(tipo){
   rp(options)
@@ -34,18 +41,21 @@ function startVerify(tipo){
 }
 
 function compareFiles(files, tipo){
+  progress.resetProgress()
   forEachAsync(arquivos, function(next, arquivo){
+    console.log(arquivos.length)
     progress.addProgress((arquivos.indexOf(arquivo)+1)/arquivos.length)
     status.innerHTML = `Verificando arquivos [${arquivos.indexOf(arquivo)+1}/${arquivos.length}]`
     glob(getPath()+'/'+arquivo, function(er, file){
+      console.log(arquivo, '-', arquivos.indexOf(arquivo)+1)
       if(file.length != 0){
         let size = fs.statSync(getPath() + '/' + arquivo)['size']
-        console.log(arquivo + ': ' + size)
+        //console.log(arquivo + ': ' + size)
         if(size != files[arquivo]){
           baixar.push(arquivo)
           if(tipo==0){
             window.alert('Algum arquivo foi alterado!')
-            window.close()
+            closeApp()
           }
         }else{
           console.log('nossa')
@@ -53,11 +63,13 @@ function compareFiles(files, tipo){
       }else{
         if(tipo==0){
           window.alert('Algum arquivo está faltando!')
-          window.close()
+          closeApp()
         }
         baixar.push(arquivo)
       }
-      next()
+      setTimeout(()=>{
+        next()
+      }, 150)
     })
   }).then(function(){
     progress.addProgress(1)
@@ -67,14 +79,16 @@ function compareFiles(files, tipo){
           downloadFiles()
       }, 2000)
     }else{
-      exec('start '+getPath()+'/IDM.exe 143.202.36.242 8484 --startAsAdmin', function(error, stdout, stderr) {
-        window.close()
+      exec('start '+getPath()+"\\"+'IDM.exe 143.202.36.242 8484 --startAsAdmin', function(error, stdout, stderr) {
+        closeApp()
       })
     }
   })
 }
 
 function downloadFiles(){
+  console.log(baixar)
+  console.log(baixar.length)
   forEachAsync(baixar, function(next, arquivo){
     req_progress(request('http://149.56.206.52/download/'+arquivo), {
     })

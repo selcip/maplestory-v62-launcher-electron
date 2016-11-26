@@ -1,6 +1,6 @@
 {
   "name": "IDMStory",
-  "version": "0.7.0",
+  "version": "1.2.0",
   "description": "Atualizador/Iniciador do IDMStory",
   "main": "electron.js",
   "scripts": {

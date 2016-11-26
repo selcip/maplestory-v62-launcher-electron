@@ -6,7 +6,7 @@ module.exports = {
 const progressbar = require('progressbar.js')
 const line = new progressbar.Line(bar, {
   easing: 'easeInOut',
-  duration: 1400,
+  duration: 200,
   svgStyle: {width: '100%', height: '100%'},
   from: {color: '#ED6A5A'},
   to: {color: '#FFEA82'},
